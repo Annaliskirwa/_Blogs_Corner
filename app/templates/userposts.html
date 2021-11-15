@@ -1,28 +1,29 @@
 {% extends 'base.html'%}
 
 {% block content %}
+<body>
     <div class="container-fluid">
-        <h1 style="color: crimson;" class="text-center mb-2">{{user.blog.count()}} Posts by {{ user.username }} </h1>
+        <h1 style="color: crimson; padding-top: 35px;" class="text-center mb-2">{{user.blog.count()}} Posts by {{ user.username }} </h1>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-4">
                     
             </div>
-            <div class="col-md-8">
+            <div class="col-md-4">
                 {% for blog in blogs.items %}
                     <div class="" >
                         <hr>
                         <div class="row">
-                            <div class="card" style="padding: 5%; background-color: transparent;">
+                            <div class="card" style="padding: 5%; background-color: rgba(0, 0, 0, 0.5)">
                                 <div class="card-image">
                                     <img class="rounded-circle blog-img mr-10" src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}">
                                 </div>
                                 <div class="card-title">
-                                    <p style="color: crimson;" >By {{blog.user.username}}</span>  on {{blog.posted.strftime('%d-%m-%Y')}}</p>
-                                    <h3 style="color: crimson;" >Title: <a href="{{url_for('main.blog',id = blog.id)}}">{{blog.title}}</a></h3>
+                                    <p style="color: crimson;">By {{blog.user.username}}</span>  on {{blog.posted.strftime('%d-%m-%Y')}}</p>
+                                    <h3 style="color: azure;">Title: <a style="color: crimson;" href="{{url_for('main.blog',id = blog.id)}}">{{blog.title}}</a></h3>
 
                                 </div>
                                 <div class="card-content">
-                                    <p>{{blog.content}}</p>
+                                    <p style="color: azure;">{{blog.content}}</p>
                                 </div>
                                 <div class="card-footer">
 
@@ -46,7 +47,8 @@
                 {% endfor %}  
 
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-4"></div>
         </div>
     </div>
+</body>
 {% endblock %}
