@@ -69,13 +69,13 @@
                     {{ message }}
                     </div>
                     {% endfor %}
-                    <form class="form-inline ml-2" action="{{url_for('main.subscribe')}}" method="POST" >
+                    <form action="{{url_for('main.subscribe')}}" method="POST" >
                         <div class="md-form form-group">
                             <label class="white-color"></label>
-                            <input type="email"  class="form-control " style="color: white;" name ="subscriber" placeholder="enter your email..." required>
+                            <input type="email"  class="form-control " style="color: azure;" name ="subscriber" placeholder="To subscribe, enter your email here.." required>
                         </div>
                         <div class="md-form form-group">
-                            <button class="btn btn-md btn-info" id="subs">Subscribe</button>
+                            <button class="btn btn-md btn-danger" id="subs">Subscribe</button>
                         </div>
                     </form>
                 </div>
