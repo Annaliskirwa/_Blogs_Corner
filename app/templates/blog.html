@@ -2,25 +2,23 @@
 
 {% block content %}
     <div class="container ">
-        <h1 class="text-center">  This blog is by: {{blog.user.username}}</h1>
+        <h1 style="color: crimson; padding-top: 50px;" class="text-center">  This blog is by: {{blog.user.username}}</h1>
        
         <div class="row">
-            
-            <div class="col-md-12 ">
-                <hr>
-                <div class="row">
-                    <div class="col-md-1">
-                        <img class="rounded-circle blog-img" src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}"height="250" width="250">
-                    </div>
-                    <div class="col-md-6">
-                        {% for message in get_flashed_messages() %}
+          <div class = "col-md-12">
+            <img class="rounded-circle blog-img" src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}"height="250" width="250">
+          </div>
+          </div>
+          <div class = "row">
+          <div style="color: azure;" class = "col-md-12">
+            {% for message in get_flashed_messages() %}
                         <div class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         {{ message }}
                         </div>
                         {% endfor %}
-                        <p>By <span> <p id="usern"><a href="{{url_for('main.user_posts',username = blog.user.username)}}"><span><strong>{{blog.user.username|title}}</strong></span> </a> </p> </span>  on {{blog.posted.strftime('%d-%m-%Y')}}</p>
-                        <h3>Title : {{blog.title}} <span style="float: right;font-size:18px;margin-right:20px">{{blog.comment.count()}} Comments</span></h3>
+                        <p >By <span> <p  id="usern"><a href="{{url_for('main.user_posts',username = blog.user.username)}}"><span style="color: crimson;"><strong>{{blog.user.username|title}}</strong></span> </a> </p> </span>  on {{blog.posted.strftime('%d-%m-%Y')}}</p>
+                       <h3 style="color: crimson;">Title : {{blog.title}} </h3>
                         <p>{{blog.content}}</p>
                         <div>
                         <a class="btn btn-success btn-sm m-1" data-toggle="modal" data-target="#modalComment">Comment</a>
@@ -28,38 +26,41 @@
                             <a class="btn btn-info btn-sm m-1" href="{{url_for('main.updateblog',blog_id = blog.id)}}">Edit Blog</a>
                             <button class="btn btn-sm btn-danger m-1" data-toggle="modal" data-target="#modalConfirmDelete" type="submit">Delete </button>
                         {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                      <form class="form-inline" action="{{url_for('main.comment',blog_id = blog.id)}}" method="POST">
-                          <div class="md-form form-group">
-                              <!-- <i class="fa fa-lock prefix"></i> -->
-                              <label for="form92"></label>
-                              <input type="text"  class="form-control" name ="newcomment" placeholder="enter a comment..." required>
-                          </div>
-                          <div class="md-form form-group">
-                              <button class="btn btn-sm btn-outline-info">Comment</button>
-                          </div>
-                      </form>
-                  </div>
-                    <div class="col-md-3 ">
-                        <h4>All Comments</h4>
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class = "row">
+        <div class = "col-md-4">
+          <form class="form-inline" action="{{url_for('main.comment',blog_id = blog.id)}}" method="POST">
+            <div class="md-form form-group">
+                <!-- <i class="fa fa-lock prefix"></i> -->
+                <label for="form92"></label>
+                <input type="text"  class="form-control" name ="newcomment" placeholder="enter a comment..." required>
+            </div>
+            <div class="md-form form-group">
+                <button class="btn btn-sm btn-outline-info">Comment</button>
+            </div>
+        </form>
+        </div>
+        <div class = "col-md-4">
+          <h4 style="color: crimson;">All Comments</h4>
                         {% for comment in comments %}
-                            <p class="mt-10"><span style="font-weight: bold">{{comment.user.username}} : </span> {{comment.comment}}</p>
+                            <p style="color: azure;" class="mt-10"><span style="font-weight: bold">{{comment.user.username}} : </span> {{comment.comment}}</p>
                             
                             {% if blog.user == current_user %}
                             <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
                             {% endif %}
                         {% endfor %}
-                        
-                    </div>
-                   
-                </div>  
-                <hr>      
-            </div>
-           
         </div>
-    </div>
+        <div class = "col-md-4">
+          <h4 style="color: crimson;">All comments count</h4><br>
+          <span style="color: azure;" style="float: right;font-size:18px;margin-right:20px">{{blog.comment.count()}} Comments</span>
+        </div>
+      </div>
+                
+                    
 
     <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">

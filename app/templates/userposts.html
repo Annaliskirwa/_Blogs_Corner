@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container-fluid">
-        <h1 class="text-center mb-2">{{user.blog.count()}} Posts by {{ user.username }} </h1>
+        <h1 style="color: crimson;" class="text-center mb-2">{{user.blog.count()}} Posts by {{ user.username }} </h1>
         <div class="row">
             <div class="col-md-2">
                     
@@ -17,8 +17,8 @@
                                     <img class="rounded-circle blog-img mr-10" src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}">
                                 </div>
                                 <div class="card-title">
-                                    <p>By {{blog.user.username}}</span>  on {{blog.posted.strftime('%d-%m-%Y')}}</p>
-                                    <h3>Title: <a href="{{url_for('main.blog',id = blog.id)}}">{{blog.title}}</a></h3>
+                                    <p style="color: crimson;" >By {{blog.user.username}}</span>  on {{blog.posted.strftime('%d-%m-%Y')}}</p>
+                                    <h3 style="color: crimson;" >Title: <a href="{{url_for('main.blog',id = blog.id)}}">{{blog.title}}</a></h3>
 
                                 </div>
                                 <div class="card-content">

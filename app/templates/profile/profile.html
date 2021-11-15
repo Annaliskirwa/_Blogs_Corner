@@ -4,7 +4,7 @@
 <div class="container" style="color: white;">
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="padding-top: 35px;">
         <div class="content-section mt-4">
             {% for message in get_flashed_messages() %}
             <div class="alert alert-success">
@@ -23,7 +23,7 @@
       <img src="{{profile_pic_path}}" class="rounded-circle account-img mt-3" alt="woman avatar"height="300" width="300">
     </div>
     <div class="card-body">
-      <h4 class="card-title text-center"> <p id="usern"><a href="{{url_for('main.user_posts',username = current_user.username)}}"><span><strong>{{current_user.username|title}}</strong></span> </a> </p> </h4>
+      <h4 class="card-title text-center"> <p id="usern"><a style="color: crimson;" href="{{url_for('main.user_posts',username = current_user.username)}}"><span><strong>{{current_user.username|title}}</strong></span> </a> </p> </h4>
      
       
       <hr>
@@ -35,10 +35,10 @@
       </div>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6" style="padding-top: 35px;">
       <div class="container mt-4" >
         <div id="profileupdate">
-          <h2>Update Your Profile Here</h2>
+          <h2 style="color: crimson;">Update Your Profile Here</h2>
             {{wtf.quick_form(form)}}
         </div>
       </div>

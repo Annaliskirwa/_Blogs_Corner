@@ -27,8 +27,8 @@
       padding: 5%;
       
   }
-submit{
-      background-color: red;
+#submit{
+      background-color: crimson;
       border-radius: 5px;
   }
 #profbutton,#ref,#subs{
