@@ -21,3 +21,6 @@ class RegForm(FlaskForm):
         if User.query.filter_by(email = data_field.data).first():
             raise ValidationError(message="Ooops!That email has already been taken..")
     
+    def validate_username(self, data_field):
+        if User.query.filter_by(username = data_field.data).first():
+            raise ValidationError(message="Ooops!That username has already been taken")
