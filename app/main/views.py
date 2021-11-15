@@ -77,8 +77,15 @@ def new_blog():
         blog = Blog(title=title,content=content,user_id=user_id)
         blog.save()
         for subscriber in subscribers:
-            mail_message("New Blog Post","email/new_blog",subscriber.email,blog=blog)
+            mail_message("A new blog has been posted","email/new_blog",subscriber.email,blog=blog)
         return redirect(url_for('main.index'))
-        flash('You Posted a new Blog')
+        flash('You have posted a new blog')
         
     return render_template('newblog.html', form = form)
+
+@main.route('/blog/<id>')
+def blog(id):
+    comments = Comment.query.filter_by(blog_id=id).all()
+    blog = Blog.query.get(id)
+    return render_template('blog.html',blog=blog,comments=comments)
+   
