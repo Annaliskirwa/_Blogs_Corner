@@ -17,3 +17,9 @@ class UpdateProfile(FlaskForm):
             if User.query.filter_by(email = email.data).first():
                 raise ValidationError("Ooops!That email has already been taken")
 
+
+    def validate_username(self, username):
+        if username.data != current_user.username:
+            if User.query.filter_by(username = username.data).first():
+                raise ValidationError("Ooops!That username has already been taken")
+
