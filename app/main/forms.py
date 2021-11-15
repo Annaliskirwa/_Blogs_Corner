@@ -10,7 +10,7 @@ class UpdateProfile(FlaskForm):
     email = StringField('Your email address here..', validators=[Required(),Email()])
     bio = TextAreaField('Tell us about you here..',validators = [Required()])
     profile_picture = FileField('profile picture', validators=[FileAllowed(['jpg','png'])])
-    submit = SubmitField('Update')
+    submit = SubmitField('Update your profile')
 
     def validate_email(self,email):
         if email.data != current_user.email:
@@ -23,3 +23,7 @@ class UpdateProfile(FlaskForm):
             if User.query.filter_by(username = username.data).first():
                 raise ValidationError("Ooops!That username has already been taken")
 
+class CreateBlog(FlaskForm):
+    title = StringField('Your blog title here..',validators=[Required()])
+    content = TextAreaField('Your blog content here..',validators=[Required()])
+    submit = SubmitField('Post your blog')
