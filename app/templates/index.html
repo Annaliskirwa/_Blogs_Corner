@@ -5,26 +5,27 @@
   <header >
     <div class="container-fluid landing">
         <div class="row">
-            <div class="col-md-8 ">
+            <div class = "col-md-4"></div>
+            <div class="col-md-4 ">
                 {% for blog in blogs.items %}
                         <hr>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card" style="padding: 5%;background-color: transparent;">
+                                <div class="card" style="padding: 5%;background-color: rgba(0, 0, 0, 0.5);">
                                     <div class="card-image">
                                         <img class="rounded-circle blog-img mr-10" class="card-img" src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}"height="250" width="250">
-                                        <a href="{{url_for('main.user_posts',username = blog.user.username)}}"><span><strong> {{ blog.user.username | title}}</strong></span> </a>
+                                        <a style="color: crimson;" href="{{url_for('main.user_posts',username = blog.user.username)}}"><span><strong> {{ blog.user.username | title}}</strong></span> </a>
                                     </div>
                                     <div class="card-title" style="text-align: center;">
 
-                                        <h4><a href="{{url_for('main.blog',id = blog.id)}}"  class="card-title">{{blog.title | upper}}</a></h4>
+                                        <h4 ><a  style="color: crimson;" href="{{url_for('main.blog',id = blog.id)}}"  class="card-title">{{blog.title | upper}}</a></h4>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-content">{{blog.content}}</p>
+                                        <p style="color: azure;" class="card-content">{{blog.content}}</p>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="card-footer">Posted on : {{blog.posted.strftime('%d-%m-%Y')}}</p>
-                                        <p> <a class="btn btn-sm btn-info" href="{{url_for('main.blog',id = blog.id)}}" > Comment</a> {{blog.comment.count()}} Comments</p>
+                                        <p style="color: azure;" class="card-footer">Posted on : {{blog.posted.strftime('%d-%m-%Y')}}</p>
+                                        <p> <a class="btn btn-sm btn-info" href="{{url_for('main.blog',id = blog.id)}}" > Comment</a> <span style="color: azure;" >{{blog.comment.count()}} Comments</span></p>
                                     </div>
                                 </div>
                             </div>
