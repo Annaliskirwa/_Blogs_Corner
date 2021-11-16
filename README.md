@@ -68,6 +68,7 @@ There are no known bugs so far
 * Bootstrap
 * Flask  
 * Postgres  
+* Quotes API
 ## Support and contact details
 In case of any problem while interacting with the web application, reach out to me at annalis.kirwa@student.moringaschool.com
 ### License.
